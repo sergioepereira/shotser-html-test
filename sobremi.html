@@ -10,9 +10,9 @@
     .font-signature { font-family: 'Dancing Script', cursive; }
   </style>
 </head>
-<body class="min-h-screen bg-neutral-950 text-white pt-20">
+<body class="bg-neutral-950 text-white lg:h-screen lg:overflow-hidden flex flex-col">
   
-  <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 px-6 py-4 backdrop-blur-sm border-b border-white/5">
+  <nav class="w-full z-50 bg-black/90 px-6 py-4 border-b border-white/5 flex-none">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <a href="index.html" class="text-2xl font-signature text-white">ShotSer</a>
       <ul class="hidden md:flex space-x-6 text-gray-300 uppercase tracking-widest text-sm">
@@ -26,27 +26,29 @@
     </div>
   </nav>
 
-  <section class="py-12 lg:py-24 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-    <div class="relative group order-2 lg:order-1">
-      <div class="absolute -inset-4 border border-white/10 z-0 group-hover:rotate-2 transition-transform duration-700"></div>
-      <div class="relative z-10 aspect-[3/4] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-        <img src="https://picsum.photos/id/338/800/1200" alt="Sergio Pereira" class="w-full h-full object-cover" loading="lazy">
-      </div>
-    </div>
+  <div class="flex-grow flex flex-col lg:flex-row w-full h-full">
     
-    <div class="order-1 lg:order-2 space-y-8">
-      <h2 class="text-4xl md:text-5xl font-serif">Sobre mí</h2>
-      <div class="space-y-6 text-gray-400 font-light text-lg text-justify leading-relaxed">
-        <p>Hola, soy <span class="text-white font-medium">Sergio Pereira</span>, también conocido como <span class="text-white font-signature text-xl">ShotSer</span>. Fotógrafo, periodista de formación y curioso por naturaleza.</p>
-        <p>Llevo más de una década entre cámaras, flashes y preguntas, dedicándome a capturar imágenes con intención: retratos que hablan, espacios que acogen y momentos eternos.</p>
-        <p>Desde Venezuela, donde me formé, hasta Madrid, construyo una marca con alma latina y mirada profesional. Trabajo para que personas y marcas no solo se vean bien, sino que se sientan representadas.</p>
-        <p>Si buscas a alguien que entienda de luz y contexto, y sepa dirigir sin que parezca un set de Hollywood, hablemos.</p>
-      </div>
-      <div class="border-l-2 border-white/20 pl-6 py-2">
-        <h3 class="text-xl text-white font-serif mb-1">¿Qué hago?</h3>
-        <p class="text-gray-500 italic">Retrato, moda, stock, eventos y cualquier historia que merezca buena luz.</p>
+    <div class="w-full lg:w-1/2 h-64 lg:h-full relative order-1 lg:order-2 group overflow-hidden">
+      <div class="absolute inset-4 border border-white/10 z-10 transition-transform duration-700 group-hover:rotate-1 hidden lg:block"></div>
+      <img src="https://picsum.photos/id/338/800/1200" alt="Sergio Pereira" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 lg:absolute lg:inset-0">
+    </div>
+
+    <div class="w-full lg:w-1/2 h-full order-2 lg:order-1 flex items-center justify-center bg-neutral-950 overflow-y-auto">
+      <div class="px-8 py-12 max-w-2xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-serif mb-8">Sobre mí</h2>
+        <div class="space-y-6 text-gray-400 font-light text-lg text-justify leading-relaxed">
+          <p>Hola, soy <span class="text-white font-medium">Sergio Pereira</span>, también conocido como <span class="text-white font-signature text-2xl">ShotSer</span>. Fotógrafo, periodista de formación y curioso por naturaleza.</p>
+          <p>Llevo más de una década entre cámaras, flashes y preguntas, dedicándome a capturar imágenes con intención: retratos que dicen más que las palabras, espacios que invitan a quedarse y momentos que merecen ser recordados.</p>
+          <p>Mi camino empezó en Venezuela y ahora construyo mi marca desde Madrid. Trabajo con personas y marcas que necesitan verse bien, pero sobre todo, sentirse bien representadas.</p>
+          <p>Si buscas a alguien que entienda tanto de luz como de contexto, hablemos.</p>
+        </div>
+        <div class="border-l-2 border-white/20 pl-6 py-2 mt-8">
+          <h3 class="text-xl text-white font-serif mb-2">¿Qué hago?</h3>
+          <p class="text-gray-500 italic">Fotografías de retrato, moda, stock, eventos y todo lo que implique una historia que merezca buena luz.</p>
+        </div>
       </div>
     </div>
-  </section>
+
+  </div>
 </body>
 </html>
