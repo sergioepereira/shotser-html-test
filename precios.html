@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Precios - ShotSer</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
     .font-signature { font-family: 'Dancing Script', cursive; }
+    .animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; }
+    @keyframes fade-in-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body class="min-h-screen bg-neutral-950 text-white pt-20">
@@ -34,40 +37,103 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
        
-       <div class="bg-neutral-900/50 border border-white/10 p-8 hover:border-white/40 transition-all duration-300">
-         <h3 class="text-3xl font-serif mb-2">Retrato</h3>
+       <div class="bg-neutral-900/50 border border-white/10 p-8 hover:border-white/40 transition-all duration-300 group">
+         <h3 class="text-3xl font-serif mb-2 group-hover:text-white transition-colors">Retrato</h3>
          <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Personal & Profesional</p>
          <div class="text-4xl font-light mb-6">Desde 70€</div>
          <p class="text-gray-400 text-sm mb-8 h-20">Sesiones para capturar tu mejor versión, redes sociales o book profesional.</p>
          <div class="space-y-3">
            <a href="contacto.html" class="block w-full py-3 bg-white text-black font-bold uppercase text-xs tracking-wider hover:bg-gray-200 text-center">Reservar</a>
-           <button class="w-full py-3 border border-white/30 text-white uppercase text-xs tracking-wider hover:bg-white/10">Saber Más</button>
+           <button onclick="document.getElementById('modal-retratos').classList.remove('hidden')" class="w-full py-3 border border-white/30 text-white uppercase text-xs tracking-wider hover:bg-white/10">Saber Más</button>
          </div>
        </div>
 
-       <div class="bg-neutral-900/50 border border-white/10 p-8 hover:border-white/40 transition-all duration-300">
-         <h3 class="text-3xl font-serif mb-2">Eventos</h3>
+       <div class="bg-neutral-900/50 border border-white/10 p-8 hover:border-white/40 transition-all duration-300 group">
+         <h3 class="text-3xl font-serif mb-2 group-hover:text-white transition-colors">Eventos</h3>
          <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Cobertura Completa</p>
          <div class="text-4xl font-light mb-6">Desde 180€</div>
          <p class="text-gray-400 text-sm mb-8 h-20">Capturo la atmósfera y momentos clave para que perduren en el tiempo.</p>
          <div class="space-y-3">
            <a href="contacto.html" class="block w-full py-3 bg-white text-black font-bold uppercase text-xs tracking-wider hover:bg-gray-200 text-center">Reservar</a>
-           <button class="w-full py-3 border border-white/30 text-white uppercase text-xs tracking-wider hover:bg-white/10">Saber Más</button>
+           <button onclick="document.getElementById('modal-eventos').classList.remove('hidden')" class="w-full py-3 border border-white/30 text-white uppercase text-xs tracking-wider hover:bg-white/10">Saber Más</button>
          </div>
        </div>
 
-       <div class="bg-neutral-900/50 border border-white/10 p-8 hover:border-white/40 transition-all duration-300">
-         <h3 class="text-3xl font-serif mb-2">Stock</h3>
+       <div class="bg-neutral-900/50 border border-white/10 p-8 hover:border-white/40 transition-all duration-300 group">
+         <h3 class="text-3xl font-serif mb-2 group-hover:text-white transition-colors">Stock</h3>
          <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Comercial & Producto</p>
          <div class="text-4xl font-light mb-6">Desde 150€</div>
          <p class="text-gray-400 text-sm mb-8 h-20">Imágenes de alta calidad para potenciar tu marca, catálogo o tienda.</p>
          <div class="space-y-3">
            <a href="contacto.html" class="block w-full py-3 bg-white text-black font-bold uppercase text-xs tracking-wider hover:bg-gray-200 text-center">Reservar</a>
-           <button class="w-full py-3 border border-white/30 text-white uppercase text-xs tracking-wider hover:bg-white/10">Saber Más</button>
+           <button onclick="document.getElementById('modal-stock').classList.remove('hidden')" class="w-full py-3 border border-white/30 text-white uppercase text-xs tracking-wider hover:bg-white/10">Saber Más</button>
          </div>
        </div>
-
     </div>
   </section>
+
+  <div id="modal-retratos" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="document.getElementById('modal-retratos').classList.add('hidden')"></div>
+      <div class="relative bg-neutral-900 border border-white/20 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl animate-fade-in-up">
+        <button onclick="document.getElementById('modal-retratos').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2"><i class="fas fa-times fa-lg"></i></button>
+        <div class="p-8 md:p-12 text-white">
+          <h3 class="text-3xl font-serif mb-1">Retratos</h3>
+          <p class="text-gray-500 mb-8 uppercase tracking-widest text-sm">Detalles del servicio</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-300 mb-8">
+              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Tiempo</th><th class="px-4 py-3">Fotos</th><th class="px-4 py-3 text-right">Precio</th></tr></thead>
+              <tbody class="divide-y divide-white/5">
+                <tr><td class="px-4 py-3">Mini sesión</td><td class="px-4 py-3">45 min</td><td class="px-4 py-3">7 editadas</td><td class="px-4 py-3 text-right font-bold">70€</td></tr>
+                <tr><td class="px-4 py-3">Estándar</td><td class="px-4 py-3">2 hrs</td><td class="px-4 py-3">15 editadas</td><td class="px-4 py-3 text-right font-bold">120€</td></tr>
+                <tr><td class="px-4 py-3">Premium</td><td class="px-4 py-3">3 hrs</td><td class="px-4 py-3">35 editadas</td><td class="px-4 py-3 text-right font-bold">250€</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex justify-end"><button onclick="document.getElementById('modal-retratos').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
+        </div>
+      </div>
+  </div>
+
+  <div id="modal-eventos" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="document.getElementById('modal-eventos').classList.add('hidden')"></div>
+      <div class="relative bg-neutral-900 border border-white/20 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl animate-fade-in-up">
+        <button onclick="document.getElementById('modal-eventos').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2"><i class="fas fa-times fa-lg"></i></button>
+        <div class="p-8 md:p-12 text-white">
+          <h3 class="text-3xl font-serif mb-1">Eventos</h3>
+          <div class="overflow-x-auto mt-8">
+            <table class="w-full text-sm text-left text-gray-300 mb-8">
+              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Tiempo</th><th class="px-4 py-3 text-right">Precio</th></tr></thead>
+              <tbody class="divide-y divide-white/5">
+                <tr><td class="px-4 py-3">Básico</td><td class="px-4 py-3">1 hr</td><td class="px-4 py-3 text-right font-bold">180€</td></tr>
+                <tr><td class="px-4 py-3">Medio</td><td class="px-4 py-3">2 hrs</td><td class="px-4 py-3 text-right font-bold">290€</td></tr>
+                <tr><td class="px-4 py-3">Completo</td><td class="px-4 py-3">3 hrs</td><td class="px-4 py-3 text-right font-bold">400€</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex justify-end"><button onclick="document.getElementById('modal-eventos').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
+        </div>
+      </div>
+  </div>
+
+  <div id="modal-stock" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="document.getElementById('modal-stock').classList.add('hidden')"></div>
+      <div class="relative bg-neutral-900 border border-white/20 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl animate-fade-in-up">
+        <button onclick="document.getElementById('modal-stock').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2"><i class="fas fa-times fa-lg"></i></button>
+        <div class="p-8 md:p-12 text-white">
+          <h3 class="text-3xl font-serif mb-1">Stock</h3>
+          <div class="overflow-x-auto mt-8">
+            <table class="w-full text-sm text-left text-gray-300 mb-8">
+              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Arts</th><th class="px-4 py-3 text-right">Precio</th></tr></thead>
+              <tbody class="divide-y divide-white/5">
+                <tr><td class="px-4 py-3">Mini</td><td class="px-4 py-3">≤ 7</td><td class="px-4 py-3 text-right font-bold">150€</td></tr>
+                <tr><td class="px-4 py-3">Básico</td><td class="px-4 py-3">8-12</td><td class="px-4 py-3 text-right font-bold">250€</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex justify-end"><button onclick="document.getElementById('modal-stock').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
+        </div>
+      </div>
+  </div>
+
 </body>
 </html>
