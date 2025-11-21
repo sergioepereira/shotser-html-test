@@ -10,11 +10,33 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
     .font-signature { font-family: 'Dancing Script', cursive; }
-    /* Estilos Glider Personalizado */
-    .glider-track { display: flex; align-items: center; }
-    .glider-slide { transition: all 0.5s ease; opacity: 0.3; transform: scale(0.8); }
-    .glider-slide.active { opacity: 1; transform: scale(1); z-index: 10; }
-    .slide-img { width: 100%; height: 60vh; object-fit: cover; border-radius: 2px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+    
+    /* ESTILOS CARRUSEL */
+    .glider-contain { margin-bottom: 50px; }
+    .glider-track { display: flex; align-items: center; padding-top: 20px; padding-bottom: 20px;}
+    
+    /* Efecto opaco y pequeño para las fotos laterales */
+    .glider-slide { 
+      transition: all 0.5s ease; 
+      opacity: 0.3; 
+      transform: scale(0.85); 
+      filter: grayscale(100%);
+    }
+    /* Efecto iluminado y grande para la foto central */
+    .glider-slide.active { 
+      opacity: 1; 
+      transform: scale(1.1); 
+      filter: grayscale(0%);
+      z-index: 20;
+    }
+    .glider-slide img { 
+      width: 100%; 
+      height: 500px; /* Altura fija para uniformidad */
+      object-fit: cover; 
+      border-radius: 4px;
+      box-shadow: 0 10px 40px -10px rgba(0,0,0,0.8);
+    }
+    /* Pestaña activa */
     .tab-btn.active { border-bottom: 2px solid white; color: white; }
   </style>
 </head>
@@ -34,64 +56,71 @@
     </div>
   </nav>
 
-  <section class="py-10">
+  <section class="py-10 w-full overflow-hidden">
     <h2 class="text-5xl font-serif text-center mb-8">Portafolio</h2>
     
-    <div class="flex justify-center space-x-6 md:space-x-12 mb-12 text-gray-500 text-sm md:text-lg tracking-widest uppercase">
-      <button onclick="openTab('retratos')" class="tab-btn hover:text-white pb-2 transition-colors" id="btn-retratos">Retratos</button>
+    <div class="flex justify-center flex-wrap gap-6 md:gap-12 mb-16 text-gray-500 text-sm md:text-lg tracking-widest uppercase px-4">
+      <button onclick="openTab('retratos')" class="tab-btn hover:text-white pb-2 transition-colors active" id="btn-retratos">Retratos</button>
       <button onclick="openTab('stock')" class="tab-btn hover:text-white pb-2 transition-colors" id="btn-stock">Stock</button>
       <button onclick="openTab('eventos')" class="tab-btn hover:text-white pb-2 transition-colors" id="btn-eventos">Eventos</button>
-      <button onclick="openTab('arquitectura')" class="tab-btn hover:text-white pb-2 transition-colors active" id="btn-arquitectura">Arquitectura</button>
+      <button onclick="openTab('arquitectura')" class="tab-btn hover:text-white pb-2 transition-colors" id="btn-arquitectura">Arquitectura</button>
     </div>
 
-    <div class="max-w-[1600px] mx-auto px-4 relative">
+    <div class="w-full max-w-[1800px] mx-auto relative">
       
-      <div id="tab-arquitectura" class="tab-content block">
-        <div class="glider-contain">
-          <div class="glider-arquitectura">
-            <div><img src="https://picsum.photos/id/50/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/122/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/234/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/238/800/1200" class="slide-img" loading="lazy"></div>
-          </div>
-          <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl z-20 prev-arqui"><i class="fas fa-chevron-left"></i></button>
-          <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl z-20 next-arqui"><i class="fas fa-chevron-right"></i></button>
-        </div>
-      </div>
-
-      <div id="tab-retratos" class="tab-content hidden">
-        <div class="glider-contain">
+      <div id="tab-retratos" class="tab-content block" data-index="0">
+        <div class="glider-contain relative">
           <div class="glider-retratos">
-             <div><img src="https://picsum.photos/id/338/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/64/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/91/800/1200" class="slide-img" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/338/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/64/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/91/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/342/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/129/800/1200" loading="lazy"></div>
           </div>
-          <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl z-20 prev-retratos"><i class="fas fa-chevron-left"></i></button>
-          <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl z-20 next-retratos"><i class="fas fa-chevron-right"></i></button>
+          <button class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-white/20 p-4 rounded-full z-30 prev-retratos"><i class="fas fa-chevron-left"></i></button>
+          <button class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-white/20 p-4 rounded-full z-30 next-retratos"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
 
-      <div id="tab-stock" class="tab-content hidden">
-        <div class="glider-contain">
+      <div id="tab-stock" class="tab-content hidden" data-index="1">
+        <div class="glider-contain relative">
           <div class="glider-stock">
-             <div><img src="https://picsum.photos/id/252/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/106/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/299/800/1200" class="slide-img" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/252/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/106/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/299/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/319/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/180/800/1200" loading="lazy"></div>
           </div>
-          <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl z-20 prev-stock"><i class="fas fa-chevron-left"></i></button>
-          <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl z-20 next-stock"><i class="fas fa-chevron-right"></i></button>
+          <button class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-white/20 p-4 rounded-full z-30 prev-stock"><i class="fas fa-chevron-left"></i></button>
+          <button class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-white/20 p-4 rounded-full z-30 next-stock"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
 
-      <div id="tab-eventos" class="tab-content hidden">
-        <div class="glider-contain">
+      <div id="tab-eventos" class="tab-content hidden" data-index="2">
+        <div class="glider-contain relative">
           <div class="glider-eventos">
-             <div><img src="https://picsum.photos/id/331/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/449/800/1200" class="slide-img" loading="lazy"></div>
-            <div><img src="https://picsum.photos/id/158/800/1200" class="slide-img" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/331/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/449/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/158/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/452/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/145/800/1200" loading="lazy"></div>
           </div>
-          <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl z-20 prev-eventos"><i class="fas fa-chevron-left"></i></button>
-          <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-4xl z-20 next-eventos"><i class="fas fa-chevron-right"></i></button>
+          <button class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-white/20 p-4 rounded-full z-30 prev-eventos"><i class="fas fa-chevron-left"></i></button>
+          <button class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-white/20 p-4 rounded-full z-30 next-eventos"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div id="tab-arquitectura" class="tab-content hidden" data-index="3">
+        <div class="glider-contain relative">
+          <div class="glider-arquitectura">
+            <div><img src="https://picsum.photos/id/50/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/122/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/234/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/238/800/1200" loading="lazy"></div>
+            <div><img src="https://picsum.photos/id/56/800/1200" loading="lazy"></div>
+          </div>
+          <button class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-white/20 p-4 rounded-full z-30 prev-arqui"><i class="fas fa-chevron-left"></i></button>
+          <button class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-white/20 p-4 rounded-full z-30 next-arqui"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
 
@@ -100,45 +129,90 @@
 
   <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.9/glider.min.js"></script>
   <script>
-    // Lógica de Pestañas
+    // Variables globales para guardar las instancias
+    var gliderInstances = {};
+    var currentTab = 'retratos';
+
+    // Configuración del Carrusel
+    const gliderConfig = {
+      slidesToShow: 1.2, // Móvil: Muestra 1 y un poquito
+      slidesToScroll: 1,
+      draggable: true,
+      centered: true, // IMPORTANTE: Centrar la imagen activa
+      arrows: { prev: null, next: null }, // Se asignan abajo
+      responsive: [
+        {
+          breakpoint: 768, // Tablet/PC
+          settings: {
+            slidesToShow: 3, // Muestra 3 fotos (Izq - Centro - Der)
+            slidesToScroll: 1,
+            centered: true
+          }
+        }
+      ]
+    };
+
+    // Función para cambiar pestañas
     function openTab(tabName) {
-      // Ocultar todos
+      currentTab = tabName;
+      // Ocultar todo y quitar active
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       
-      // Mostrar seleccionado
+      // Mostrar actual
       document.getElementById('tab-' + tabName).classList.remove('hidden');
       document.getElementById('btn-' + tabName).classList.add('active');
-
-      // Actualizar Gliders (necesario cuando se muestra un div oculto)
-      window.dispatchEvent(new Event('resize'));
+      
+      // Refrescar glider (necesario cuando estaba oculto)
+      if(gliderInstances[tabName]) {
+        gliderInstances[tabName].refresh(true);
+      }
     }
 
-    // Configuración Glider común
-    const config = {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      draggable: true,
-      scrollLock: true,
-      rewind: true,
-      responsive: [{ breakpoint: 768, settings: { slidesToShow: 2.5, slidesToScroll: 1, exactWidth: false } }] // 2.5 muestra la central y cachitos de las laterales
-    };
-
+    // Iniciar al cargar
     window.addEventListener('load', function(){
-      // Iniciar todos los carruseles
-      new Glider(document.querySelector('.glider-arquitectura'), { ...config, arrows: { prev: '.prev-arqui', next: '.next-arqui' } });
-      new Glider(document.querySelector('.glider-retratos'), { ...config, arrows: { prev: '.prev-retratos', next: '.next-retratos' } });
-      new Glider(document.querySelector('.glider-stock'), { ...config, arrows: { prev: '.prev-stock', next: '.next-stock' } });
-      new Glider(document.querySelector('.glider-eventos'), { ...config, arrows: { prev: '.prev-eventos', next: '.next-eventos' } });
+      // Crear instancias
+      gliderInstances['retratos'] = new Glider(document.querySelector('.glider-retratos'), { ...gliderConfig, arrows: { prev: '.prev-retratos', next: '.next-retratos' } });
+      gliderInstances['stock'] = new Glider(document.querySelector('.glider-stock'), { ...gliderConfig, arrows: { prev: '.prev-stock', next: '.next-stock' } });
+      gliderInstances['eventos'] = new Glider(document.querySelector('.glider-eventos'), { ...gliderConfig, arrows: { prev: '.prev-eventos', next: '.next-eventos' } });
+      gliderInstances['arquitectura'] = new Glider(document.querySelector('.glider-arquitectura'), { ...gliderConfig, arrows: { prev: '.prev-arqui', next: '.next-arqui' } });
       
-      // Añadir clase 'active' a la diapositiva central (Efecto visual)
+      // Función para resaltar la foto central
+      const highlightCenter = (e) => {
+        const glider = e.detail.target; // Instancia Glider
+        // Quitamos 'active' de todos los slides de este carrusel
+        e.target.querySelectorAll('.glider-slide').forEach(s => s.classList.remove('active'));
+        // Buscamos el slide que está en el centro
+        // Glider pone la clase 'center' o 'visible' dependiendo, pero calcularemos por índice si es necesario
+        // Truco visual: Glider añade 'left'/'right'/'center' en versiones nuevas, pero usando CSS + centered:true funciona bien.
+        // Vamos a forzar la clase active en el slide actual:
+        const slides = e.target.querySelectorAll('.glider-slide');
+        if(slides[glider.slide]) slides[glider.slide].classList.add('active');
+      };
+
+      // Añadir evento de scroll a todos
       document.querySelectorAll('.glider').forEach(g => {
-        g.addEventListener('glider-slide-visible', function(event){
-           var glider = Glider(this);
-           // Lógica visual extra para iluminar centro puede ir aquí
-           console.log("Slide changed");
+        g.addEventListener('glider-animated', function(){
+             // Actualizar clases después de mover
+             let activeIndex = gliderInstances[currentTab].slide;
+             let slides = document.querySelector('.glider-' + currentTab).querySelectorAll('.glider-slide');
+             slides.forEach(s => s.classList.remove('active'));
+             if(slides[activeIndex]) slides[activeIndex].classList.add('active');
         });
+        // Marcar el primero como activo al inicio
+        g.querySelectorAll('.glider-slide')[0].classList.add('active');
       });
+    });
+
+    // CONTROL POR TECLADO
+    document.addEventListener('keydown', function(e) {
+      if (!gliderInstances[currentTab]) return;
+      
+      if (e.key === 'ArrowLeft') {
+        gliderInstances[currentTab].scrollItem('prev');
+      } else if (e.key === 'ArrowRight') {
+        gliderInstances[currentTab].scrollItem('next');
+      }
     });
   </script>
 </body>
