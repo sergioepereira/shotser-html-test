@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre Mí - ShotSer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+    .font-signature { font-family: 'Dancing Script', cursive; }
+  </style>
+</head>
+<body class="min-h-screen bg-neutral-950 text-white pt-20">
+  
+  <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 px-6 py-4 backdrop-blur-sm border-b border-white/5">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-signature text-white">ShotSer</a>
+      <ul class="hidden md:flex space-x-6 text-gray-300 uppercase tracking-widest text-sm">
+        <li><a href="index.html" class="hover:text-white">Inicio</a></li>
+        <li><a href="sobremi.html" class="text-white border-b border-white">Sobre Mí</a></li>
+        <li><a href="portafolio.html" class="hover:text-white">Portafolio</a></li>
+        <li><a href="precios.html" class="hover:text-white">Precios</a></li>
+        <li><a href="recomendaciones.html" class="hover:text-white">Recomendaciones</a></li>
+        <li><a href="contacto.html" class="hover:text-white">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="py-12 lg:py-24 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="relative group order-2 lg:order-1">
+      <div class="absolute -inset-4 border border-white/10 z-0 group-hover:rotate-2 transition-transform duration-700"></div>
+      <div class="relative z-10 aspect-[3/4] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+        <img src="https://picsum.photos/id/338/800/1200" alt="Sergio Pereira" class="w-full h-full object-cover" loading="lazy">
+      </div>
+    </div>
+    
+    <div class="order-1 lg:order-2 space-y-8">
+      <h2 class="text-4xl md:text-5xl font-serif">Sobre mí</h2>
+      <div class="space-y-6 text-gray-400 font-light text-lg text-justify leading-relaxed">
+        <p>Hola, soy <span class="text-white font-medium">Sergio Pereira</span>, también conocido como <span class="text-white font-signature text-xl">ShotSer</span>. Fotógrafo, periodista de formación y curioso por naturaleza.</p>
+        <p>Llevo más de una década entre cámaras, flashes y preguntas, dedicándome a capturar imágenes con intención: retratos que hablan, espacios que acogen y momentos eternos.</p>
+        <p>Desde Venezuela, donde me formé, hasta Madrid, construyo una marca con alma latina y mirada profesional. Trabajo para que personas y marcas no solo se vean bien, sino que se sientan representadas.</p>
+        <p>Si buscas a alguien que entienda de luz y contexto, y sepa dirigir sin que parezca un set de Hollywood, hablemos.</p>
+      </div>
+      <div class="border-l-2 border-white/20 pl-6 py-2">
+        <h3 class="text-xl text-white font-serif mb-1">¿Qué hago?</h3>
+        <p class="text-gray-500 italic">Retrato, moda, stock, eventos y cualquier historia que merezca buena luz.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
