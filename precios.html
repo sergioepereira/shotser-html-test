@@ -81,15 +81,35 @@
           <p class="text-gray-500 mb-8 uppercase tracking-widest text-sm">Detalles del servicio</p>
           <div class="overflow-x-auto">
             <table class="w-full text-sm text-left text-gray-300 mb-8">
-              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Tiempo</th><th class="px-4 py-3">Fotos</th><th class="px-4 py-3 text-right">Precio</th></tr></thead>
+              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Tiempo</th><th class="px-4 py-3">Fotos (Sin/Con Edit)</th><th class="px-4 py-3 text-right">Precio</th></tr></thead>
               <tbody class="divide-y divide-white/5">
-                <tr><td class="px-4 py-3">Mini sesión</td><td class="px-4 py-3">45 min</td><td class="px-4 py-3">7 editadas</td><td class="px-4 py-3 text-right font-bold">70€</td></tr>
-                <tr><td class="px-4 py-3">Estándar</td><td class="px-4 py-3">2 hrs</td><td class="px-4 py-3">15 editadas</td><td class="px-4 py-3 text-right font-bold">120€</td></tr>
-                <tr><td class="px-4 py-3">Premium</td><td class="px-4 py-3">3 hrs</td><td class="px-4 py-3">35 editadas</td><td class="px-4 py-3 text-right font-bold">250€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Mini sesión</td><td class="px-4 py-3">45 min</td><td class="px-4 py-3">20 / 7</td><td class="px-4 py-3 text-right font-bold">70€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Estándar</td><td class="px-4 py-3">2 hrs</td><td class="px-4 py-3">40 / 15</td><td class="px-4 py-3 text-right font-bold">120€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Completa</td><td class="px-4 py-3">2h 30m</td><td class="px-4 py-3">50 / 25</td><td class="px-4 py-3 text-right font-bold">150€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Premium</td><td class="px-4 py-3">3 hrs</td><td class="px-4 py-3">70 / 35</td><td class="px-4 py-3 text-right font-bold">250€</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="flex justify-end"><button onclick="document.getElementById('modal-retratos').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+             <div>
+               <h4 class="font-bold text-white mb-2">Extras</h4>
+               <ul class="space-y-1 text-gray-400">
+                 <li class="flex justify-between"><span>Foto editada extra:</span> <span class="text-white">7€</span></li>
+                 <li class="flex justify-between"><span>Pack 5 fotos:</span> <span class="text-white">25€</span></li>
+                 <li class="flex justify-between"><span>Hora extra:</span> <span class="text-white">20€</span></li>
+                 <li class="flex justify-between"><span>Foto sin editar extra:</span> <span class="text-white">5€</span></li>
+               </ul>
+             </div>
+             <div>
+               <h4 class="font-bold text-white mb-2">Entrega</h4>
+               <ul class="space-y-1 text-gray-400">
+                 <li>Tiempo: 1 y 2 semanas</li>
+                 <li>Express: 50€</li>
+                 <li>Álbum/PDF: A consultar</li>
+               </ul>
+             </div>
+          </div>
+          <div class="mt-8 flex justify-end"><button onclick="document.getElementById('modal-retratos').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
         </div>
       </div>
   </div>
@@ -102,15 +122,33 @@
           <h3 class="text-3xl font-serif mb-1">Eventos</h3>
           <div class="overflow-x-auto mt-8">
             <table class="w-full text-sm text-left text-gray-300 mb-8">
-              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Tiempo</th><th class="px-4 py-3 text-right">Precio</th></tr></thead>
+              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Tiempo</th><th class="px-4 py-3">Fotos (Sin/Con)</th><th class="px-4 py-3 text-right">Precio</th></tr></thead>
               <tbody class="divide-y divide-white/5">
-                <tr><td class="px-4 py-3">Básico</td><td class="px-4 py-3">1 hr</td><td class="px-4 py-3 text-right font-bold">180€</td></tr>
-                <tr><td class="px-4 py-3">Medio</td><td class="px-4 py-3">2 hrs</td><td class="px-4 py-3 text-right font-bold">290€</td></tr>
-                <tr><td class="px-4 py-3">Completo</td><td class="px-4 py-3">3 hrs</td><td class="px-4 py-3 text-right font-bold">400€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Básico</td><td class="px-4 py-3">1 hr</td><td class="px-4 py-3">70 / 15</td><td class="px-4 py-3 text-right font-bold">180€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Medio</td><td class="px-4 py-3">2 hrs</td><td class="px-4 py-3">120 / 35</td><td class="px-4 py-3 text-right font-bold">290€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Completo</td><td class="px-4 py-3">3 hrs</td><td class="px-4 py-3">200 / 60</td><td class="px-4 py-3 text-right font-bold">400€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Adicional (+3h)</td><td class="px-4 py-3">1 hr</td><td class="px-4 py-3">40 / 15</td><td class="px-4 py-3 text-right font-bold">100€/hr</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="flex justify-end"><button onclick="document.getElementById('modal-eventos').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+             <div>
+               <h4 class="font-bold text-white mb-2">Extras</h4>
+               <ul class="space-y-1 text-gray-400">
+                 <li class="flex justify-between"><span>Hora extra cobertura:</span> <span class="text-white">100€</span></li>
+                 <li class="flex justify-between"><span>Foto editada extra:</span> <span class="text-white">15€</span></li>
+                 <li class="flex justify-between"><span>Pack 5 fotos:</span> <span class="text-white">50€</span></li>
+               </ul>
+             </div>
+             <div>
+                <h4 class="font-bold text-white mb-2">Otros</h4>
+               <ul class="space-y-1 text-gray-400">
+                 <li>Desplazamiento fuera Madrid: A consultar</li>
+                 <li>Tiempo de entrega: A consultar</li>
+               </ul>
+             </div>
+          </div>
+          <div class="flex justify-end mt-8"><button onclick="document.getElementById('modal-eventos').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
         </div>
       </div>
   </div>
@@ -123,14 +161,28 @@
           <h3 class="text-3xl font-serif mb-1">Stock</h3>
           <div class="overflow-x-auto mt-8">
             <table class="w-full text-sm text-left text-gray-300 mb-8">
-              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Arts</th><th class="px-4 py-3 text-right">Precio</th></tr></thead>
+              <thead class="text-xs text-white uppercase bg-white/10"><tr><th class="px-4 py-3">Opción</th><th class="px-4 py-3">Arts</th><th class="px-4 py-3">Tiempo</th><th class="px-4 py-3 text-right">Precio</th><th class="px-4 py-3 text-right">Estudio</th></tr></thead>
               <tbody class="divide-y divide-white/5">
-                <tr><td class="px-4 py-3">Mini</td><td class="px-4 py-3">≤ 7</td><td class="px-4 py-3 text-right font-bold">150€</td></tr>
-                <tr><td class="px-4 py-3">Básico</td><td class="px-4 py-3">8-12</td><td class="px-4 py-3 text-right font-bold">250€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Mini</td><td class="px-4 py-3">≤ 7</td><td class="px-4 py-3">1h 30m</td><td class="px-4 py-3 text-right font-bold">150€</td><td class="px-4 py-3 text-right">200€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Básico</td><td class="px-4 py-3">8-12</td><td class="px-4 py-3">2h 30m</td><td class="px-4 py-3 text-right font-bold">250€</td><td class="px-4 py-3 text-right">300€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Estándar</td><td class="px-4 py-3">13-18</td><td class="px-4 py-3">3h 30m</td><td class="px-4 py-3 text-right font-bold">350€</td><td class="px-4 py-3 text-right">450€</td></tr>
+                <tr><td class="px-4 py-3 text-white font-medium">Premium</td><td class="px-4 py-3">19-30</td><td class="px-4 py-3">4h 30m</td><td class="px-4 py-3 text-right font-bold">500€</td><td class="px-4 py-3 text-right">600€</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="flex justify-end"><button onclick="document.getElementById('modal-stock').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
+          <div class="grid grid-cols-1 gap-4 text-sm">
+             <div class="bg-white/5 p-4 border border-white/10">
+               <h4 class="font-bold text-white mb-2">Licencia de Uso</h4>
+               <p class="text-gray-400 text-xs">El precio base incluye licencia para web y redes sociales. Usos extendidos +200€.</p>
+             </div>
+             <div>
+               <ul class="space-y-1 text-gray-400">
+                 <li class="flex justify-between"><span>Artículo adicional:</span> <span class="text-white">25€</span></li>
+                 <li class="flex justify-between"><span>Hora extra:</span> <span class="text-white">120€</span></li>
+               </ul>
+             </div>
+          </div>
+          <div class="flex justify-end mt-8"><button onclick="document.getElementById('modal-stock').classList.add('hidden')" class="px-6 py-2 bg-white text-black font-medium uppercase">Cerrar</button></div>
         </div>
       </div>
   </div>
