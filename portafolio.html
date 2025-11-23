@@ -12,36 +12,96 @@
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
     .font-signature { font-family: 'Dancing Script', cursive; }
     
-    /* Ajustes Swiper */
+    /* --- ESTILOS SWIPER (CARRUSEL) --- */
     .swiper { width: 100%; padding-top: 50px; padding-bottom: 50px; }
+    
     .swiper-slide {
       background-position: center;
       background-size: cover;
-      width: 300px; /* Ancho base movil */
+      width: 300px; /* Ancho en móvil */
       height: 500px;
       transition: all 0.5s ease;
-      opacity: 0.4; /* Oscuro por defecto */
-      transform: scale(0.85); /* Pequeño por defecto */
+      opacity: 0.4; 
+      transform: scale(0.85); 
       filter: grayscale(100%);
       border-radius: 8px;
       overflow: hidden;
+      cursor: pointer; /* Manita para indicar click */
     }
+
     /* Foto Central Activa */
     .swiper-slide-active {
       opacity: 1;
-      transform: scale(1.1); /* Zoom */
+      transform: scale(1.1); 
       filter: grayscale(0%);
       z-index: 10;
       box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     }
-    .swiper-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* --- CORRECCIÓN DE MINIATURAS (VER PARTE DE ARRIBA) --- */
+    .swiper-slide img { 
+      display: block; 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      object-position: top; /* <--- ESTO ARREGLA QUE SE VEAN LAS CARAS */
+    }
 
     /* Responsive Desktop */
     @media (min-width: 768px) {
-      .swiper-slide { width: 600px; height: 600px; } /* Más grande en PC */
+      .swiper-slide { width: 600px; height: 600px; } 
     }
 
     .tab-btn.active { border-bottom: 2px solid white; color: white; }
+
+    /* --- ESTILOS LIGHTBOX (VISOR PANTALLA COMPLETA) --- */
+    #lightbox {
+      display: none; /* Oculto por defecto */
+      position: fixed;
+      z-index: 9999;
+      padding-top: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.95); /* Fondo negro casi total */
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Imagen dentro del Lightbox */
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain; /* Asegura que la foto se vea ENTERA sin recortes */
+      border-radius: 4px;
+      /* EFECTO NEÓN BLANCO */
+      box-shadow: 0 0 40px 10px rgba(255, 255, 255, 0.6); 
+      animation: zoomIn 0.3s ease;
+    }
+
+    /* Botón cerrar */
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+      transition: 0.3s;
+    }
+    .close-lightbox:hover { color: #bbb; }
+
+    @keyframes zoomIn {
+      from {transform:scale(0.8); opacity:0} 
+      to {transform:scale(1); opacity:1}
+    }
   </style>
 </head>
 <body class="min-h-screen bg-black text-white pt-20 overflow-x-hidden">
@@ -108,11 +168,10 @@
       <div id="tab-stock" class="tab-content hidden">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://picsum.photos/id/252/800/1200" loading="lazy"></div>
+             <div class="swiper-slide"><img src="https://picsum.photos/id/252/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/106/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/299/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/319/800/1200" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://picsum.photos/id/180/800/1200" loading="lazy"></div>
           </div>
           <div class="swiper-button-next text-white"></div>
           <div class="swiper-button-prev text-white"></div>
@@ -125,7 +184,6 @@
              <div class="swiper-slide"><img src="https://picsum.photos/id/331/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/449/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/158/800/1200" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://picsum.photos/id/452/800/1200" loading="lazy"></div>
           </div>
           <div class="swiper-button-next text-white"></div>
           <div class="swiper-button-prev text-white"></div>
@@ -135,10 +193,9 @@
       <div id="tab-arquitectura" class="tab-content hidden">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://picsum.photos/id/50/800/1200" loading="lazy"></div>
+             <div class="swiper-slide"><img src="https://picsum.photos/id/50/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/122/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/234/800/1200" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://picsum.photos/id/238/800/1200" loading="lazy"></div>
           </div>
           <div class="swiper-button-next text-white"></div>
           <div class="swiper-button-prev text-white"></div>
@@ -148,15 +205,20 @@
     </div>
   </section>
 
+  <div id="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    // Configuración Base Swiper
+    // 1. CONFIGURACIÓN SWIPER
     const swiperConfig = {
       effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
-      slidesPerView: "auto", // Deja que el CSS decida el ancho
-      loop: true, // Infinito
+      slidesPerView: "auto",
+      loop: true, 
       coverflowEffect: {
         rotate: 0,
         stretch: 0,
@@ -164,28 +226,43 @@
         modifier: 1,
         slideShadows: true,
       },
-      keyboard: {
-        enabled: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
+      keyboard: { enabled: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
     };
 
-    // Inicializar todos los swipers (uno por tab)
+    // Inicializar Swipers
     const swipers = document.querySelectorAll('.mySwiper');
     swipers.forEach(s => new Swiper(s, swiperConfig));
 
-    // Lógica de Pestañas
+    // 2. LÓGICA PESTAÑAS
     function openTab(tabName) {
-      // Ocultar todos
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      
-      // Mostrar actual
       document.getElementById('tab-' + tabName).classList.remove('hidden');
       document.getElementById('btn-' + tabName).classList.add('active');
+    }
+
+    // 3. LÓGICA LIGHTBOX (ABRIR FOTO COMPLETA)
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close-lightbox');
+
+    // Detectar clic en cualquier imagen dentro de un slide
+    document.addEventListener('click', function(e) {
+      if(e.target.tagName === 'IMG' && e.target.closest('.swiper-slide')) {
+        lightbox.style.display = "flex";
+        lightboxImg.src = e.target.src; // Pone la misma foto en el visor
+      }
+    });
+
+    // Cerrar Lightbox
+    closeBtn.onclick = function() { lightbox.style.display = "none"; }
+    
+    // Cerrar al hacer clic fuera de la foto
+    lightbox.onclick = function(e) {
+      if (e.target !== lightboxImg) {
+        lightbox.style.display = "none";
+      }
     }
   </script>
 </body>
