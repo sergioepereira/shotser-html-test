@@ -18,7 +18,7 @@
     .swiper-slide {
       background-position: center;
       background-size: cover;
-      width: 300px; /* Ancho en móvil */
+      width: 300px; /* Ancho móvil */
       height: 500px;
       transition: all 0.5s ease;
       opacity: 0.4; 
@@ -26,10 +26,9 @@
       filter: grayscale(100%);
       border-radius: 8px;
       overflow: hidden;
-      cursor: pointer; /* Manita para indicar click */
+      cursor: pointer;
     }
 
-    /* Foto Central Activa */
     .swiper-slide-active {
       opacity: 1;
       transform: scale(1.1); 
@@ -38,69 +37,93 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     }
 
-    /* --- CORRECCIÓN DE MINIATURAS (VER PARTE DE ARRIBA) --- */
     .swiper-slide img { 
-      display: block; 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      object-position: top; /* <--- ESTO ARREGLA QUE SE VEAN LAS CARAS */
+      display: block; width: 100%; height: 100%; 
+      object-fit: cover; object-position: top; 
     }
 
-    /* Responsive Desktop */
     @media (min-width: 768px) {
       .swiper-slide { width: 600px; height: 600px; } 
     }
 
     .tab-btn.active { border-bottom: 2px solid white; color: white; }
 
-    /* --- ESTILOS LIGHTBOX (VISOR PANTALLA COMPLETA) --- */
+    /* --- ESTILOS LIGHTBOX (VISOR) --- */
     #lightbox {
-      display: none; /* Oculto por defecto */
+      display: none;
       position: fixed;
       z-index: 9999;
-      padding-top: 0;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.95); /* Fondo negro casi total */
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
       backdrop-filter: blur(5px);
       align-items: center;
       justify-content: center;
     }
 
-    /* Imagen dentro del Lightbox */
-    .lightbox-content {
-      margin: auto;
-      display: block;
+    /* Contenedor relativo para posicionar las flechas PEGADAS a la foto */
+    .lightbox-wrapper {
+      position: relative;
       max-width: 90%;
       max-height: 90vh;
-      object-fit: contain; /* Asegura que la foto se vea ENTERA sin recortes */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content {
+      display: block;
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
       border-radius: 4px;
-      /* EFECTO NEÓN BLANCO */
-      box-shadow: 0 0 40px 10px rgba(255, 255, 255, 0.6); 
+      /* Efecto Neón */
+      box-shadow: 0 0 40px 10px rgba(255, 255, 255, 0.4); 
       animation: zoomIn 0.3s ease;
     }
 
-    /* Botón cerrar */
+    /* --- FLECHAS DE NAVEGACIÓN LIGHTBOX --- */
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 3rem;
+      cursor: pointer;
+      z-index: 10001;
+      padding: 10px;
+      /* Animación Parpadeo */
+      animation: pulse-white 2s infinite;
+      text-shadow: 0 0 10px rgba(0,0,0,0.8); /* Sombra para que se vea si la foto es clara */
+      user-select: none;
+    }
+    
+    .lb-prev { left: -60px; } /* Posición justo a la izquierda de la foto */
+    .lb-next { right: -60px; } /* Posición justo a la derecha de la foto */
+
+    /* En móvil las separamos un poco más para que no tapen la foto */
+    @media (max-width: 768px) {
+      .lb-prev { left: -40px; font-size: 2rem; }
+      .lb-next { right: -40px; font-size: 2rem; }
+    }
+
     .close-lightbox {
       position: absolute;
-      top: 20px;
-      right: 35px;
+      top: 20px; right: 35px;
       color: #f1f1f1;
       font-size: 40px;
       font-weight: bold;
       cursor: pointer;
-      z-index: 10000;
+      z-index: 10002;
       transition: 0.3s;
     }
     .close-lightbox:hover { color: #bbb; }
 
-    @keyframes zoomIn {
-      from {transform:scale(0.8); opacity:0} 
-      to {transform:scale(1); opacity:1}
+    @keyframes zoomIn { from {transform:scale(0.8); opacity:0} to {transform:scale(1); opacity:1} }
+    @keyframes pulse-white {
+      0% { opacity: 1; text-shadow: 0 0 10px white; }
+      50% { opacity: 0.3; text-shadow: 0 0 0px white; }
+      100% { opacity: 1; text-shadow: 0 0 10px white; }
     }
   </style>
 </head>
@@ -168,10 +191,9 @@
       <div id="tab-stock" class="tab-content hidden">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-             <div class="swiper-slide"><img src="https://picsum.photos/id/252/800/1200" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://picsum.photos/id/252/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/106/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/299/800/1200" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://picsum.photos/id/319/800/1200" loading="lazy"></div>
           </div>
           <div class="swiper-button-next text-white"></div>
           <div class="swiper-button-prev text-white"></div>
@@ -181,7 +203,7 @@
       <div id="tab-eventos" class="tab-content hidden">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-             <div class="swiper-slide"><img src="https://picsum.photos/id/331/800/1200" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://picsum.photos/id/331/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/449/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/158/800/1200" loading="lazy"></div>
           </div>
@@ -193,9 +215,8 @@
       <div id="tab-arquitectura" class="tab-content hidden">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-             <div class="swiper-slide"><img src="https://picsum.photos/id/50/800/1200" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://picsum.photos/id/50/800/1200" loading="lazy"></div>
             <div class="swiper-slide"><img src="https://picsum.photos/id/122/800/1200" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://picsum.photos/id/234/800/1200" loading="lazy"></div>
           </div>
           <div class="swiper-button-next text-white"></div>
           <div class="swiper-button-prev text-white"></div>
@@ -207,7 +228,18 @@
 
   <div id="lightbox">
     <span class="close-lightbox">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
+    
+    <div class="lightbox-wrapper">
+      <div class="lb-nav lb-prev" onclick="changeImage(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      
+      <img class="lightbox-content" id="lightbox-img">
+      
+      <div class="lb-nav lb-next" onclick="changeImage(1)">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -234,36 +266,97 @@
     const swipers = document.querySelectorAll('.mySwiper');
     swipers.forEach(s => new Swiper(s, swiperConfig));
 
-    // 2. LÓGICA PESTAÑAS
+    // 2. LÓGICA PESTAÑAS (TABS)
+    // Guardamos la pestaña actual para saber qué fotos cargar en el lightbox
+    let currentActiveTab = 'retratos'; 
+
     function openTab(tabName) {
+      currentActiveTab = tabName; // Actualizamos estado
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       document.getElementById('tab-' + tabName).classList.remove('hidden');
       document.getElementById('btn-' + tabName).classList.add('active');
     }
 
-    // 3. LÓGICA LIGHTBOX (ABRIR FOTO COMPLETA)
+    // 3. LÓGICA LIGHTBOX AVANZADO (Navegación)
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.close-lightbox');
+    
+    // Variables para controlar la galería abierta
+    let galleryImages = []; // Array con las rutas de las fotos
+    let currentImageIndex = 0; // Índice de la foto actual
 
-    // Detectar clic en cualquier imagen dentro de un slide
+    // Detectar clic para ABRIR
     document.addEventListener('click', function(e) {
+      // Si hacemos clic en una imagen dentro de un swiper-slide
       if(e.target.tagName === 'IMG' && e.target.closest('.swiper-slide')) {
+        
+        // 1. Obtener todas las imágenes de la pestaña ACTIVA actual
+        // Filtramos para evitar duplicados del loop infinito de Swiper (.swiper-slide-duplicate)
+        const container = document.getElementById('tab-' + currentActiveTab);
+        const slides = container.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate) img');
+        
+        // 2. Llenar el array de galería
+        galleryImages = Array.from(slides).map(img => img.src);
+        
+        // 3. Encontrar el índice de la foto clickeada
+        // (Buscamos coincidencias parciales por si hay diferencias de ruta absoluta/relativa)
+        const clickedSrc = e.target.src;
+        currentImageIndex = galleryImages.findIndex(src => src === clickedSrc);
+        
+        // Si por alguna razón es -1 (loop duplicate), buscamos la más parecida
+        if (currentImageIndex === -1) {
+           currentImageIndex = 0; // Fallback
+        }
+
+        // 4. Mostrar Lightbox
+        updateLightboxImage();
         lightbox.style.display = "flex";
-        lightboxImg.src = e.target.src; // Pone la misma foto en el visor
       }
     });
+
+    // Función para cambiar de foto (Next/Prev)
+    function changeImage(direction) {
+      currentImageIndex += direction;
+
+      // Loop infinito dentro del lightbox
+      if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+      } else if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
+      }
+
+      updateLightboxImage();
+    }
+
+    // Función auxiliar para actualizar la fuente
+    function updateLightboxImage() {
+      lightboxImg.src = galleryImages[currentImageIndex];
+    }
 
     // Cerrar Lightbox
     closeBtn.onclick = function() { lightbox.style.display = "none"; }
     
-    // Cerrar al hacer clic fuera de la foto
+    // Cerrar al hacer clic en el fondo negro (pero no en la foto ni flechas)
     lightbox.onclick = function(e) {
-      if (e.target !== lightboxImg) {
+      if (e.target.id === 'lightbox') {
         lightbox.style.display = "none";
       }
     }
+
+    // NAVEGACIÓN POR TECLADO EN LIGHTBOX
+    document.addEventListener('keydown', function(e) {
+      if (lightbox.style.display === "flex") {
+        if (e.key === "ArrowLeft") {
+          changeImage(-1);
+        } else if (e.key === "ArrowRight") {
+          changeImage(1);
+        } else if (e.key === "Escape") {
+          lightbox.style.display = "none";
+        }
+      }
+    });
   </script>
 </body>
 </html>
