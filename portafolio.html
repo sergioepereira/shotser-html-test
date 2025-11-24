@@ -24,7 +24,7 @@
       opacity: 0.4; 
       transform: scale(0.85); 
       filter: grayscale(100%);
-      border-radius: 8px;
+      border-radius: 8px; /* BORDE REDONDEADO: Mantenido aquí */
       overflow: hidden;
       cursor: pointer;
 
@@ -35,12 +35,13 @@
       padding-bottom: 50px;      /* ajusta para ver más o menos "respiro" */
       box-sizing: border-box;
 
-      .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: calc(100% - 12px); /* resta el padding para que la imagen no toque el borde inferior */
-      object-fit: cover;
-      object-position: center;   /* centra la imagen (evita cortar siempre por abajo) */
+      .swiper-slide img { 
+      display: block; 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      object-position: center; /* Cambiamos de 'top' a 'center' para centrar el encuadre */
+      border-radius: 8px; /* BORDE REDONDEADO: Añadido aquí para asegurar */
       }
     }
 
@@ -180,7 +181,7 @@
 
   </div>
 
-  <section class="pt-28 pb-10 w-full">
+  <section class="pt-28 pb-20 w-full">
     <h2 class="text-5xl font-serif text-center mb-8">Portafolio</h2>
     
     <div class="flex justify-center flex-wrap gap-6 md:gap-12 mb-8 text-gray-500 text-sm md:text-lg tracking-widest uppercase px-4">
