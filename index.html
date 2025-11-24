@@ -20,8 +20,8 @@
 </head>
 <body class="h-screen bg-black text-white overflow-hidden">
 
-  <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 px-6 py-4 backdrop-blur-sm border-b border-white/5">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
+  <nav class="fixed top-0 left-0 w-full h-20 z-50 bg-black/90 px-6 backdrop-blur-sm border-b border-white/5 flex items-center">
+    <div class="w-full max-w-7xl mx-auto flex justify-between items-center relative">
       
       <a href="index.html" class="text-2xl font-signature text-white relative z-50">ShotSer</a>
       
@@ -34,25 +34,23 @@
         <li><a href="contacto.html" class="hover:text-white transition">Contacto</a></li>
       </ul>
 
-      <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none relative z-50">
-        <i class="fas fa-bars fa-2x"></i>
+      <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none relative z-50 p-2">
+        <i class="fas fa-bars fa-xl"></i>
       </button>
+
     </div>
   </nav>
 
-  <div id="mobile-menu" class="fixed inset-y-0 right-0 w-3/4 bg-black z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-center items-center shadow-2xl border-l border-white/10">
+  <div id="mobile-menu" class="fixed top-0 right-0 w-full h-20 bg-black z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex items-center shadow-2xl border-b border-white/10 md:hidden overflow-x-auto pl-32 pr-20">
     
-    <ul class="flex flex-col space-y-8 text-center">
-      <li><a href="sobremi.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Sobre Mí</a></li>
-      <li><a href="portafolio.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Portafolio</a></li>
-      <li><a href="precios.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Precios</a></li>
-      <li><a href="recomendaciones.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Recomendaciones</a></li>
-      <li><a href="contacto.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Contacto</a></li>
+    <ul class="flex flex-row space-x-8 whitespace-nowrap">
+      <li><a href="sobremi.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Sobre Mí</a></li>
+      <li><a href="portafolio.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Portafolio</a></li>
+      <li><a href="precios.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Precios</a></li>
+      <li><a href="recomendaciones.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Recomendaciones</a></li>
+      <li><a href="contacto.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Contacto</a></li>
     </ul>
 
-    <div class="absolute bottom-10 text-gray-500 text-xs tracking-widest">
-      SHOTSER PHOTOGRAPHY
-    </div>
   </div>
 
   <section class="relative h-full w-full flex items-center justify-center">
@@ -86,16 +84,19 @@
       isMenuOpen = !isMenuOpen;
       
       if (isMenuOpen) {
+        // Abrir: El menú se desliza desde la derecha y se pone DEBAJO del logo
         mobileMenu.classList.remove('translate-x-full');
         icon.classList.remove('fa-bars');
         icon.classList.add('fa-times');
       } else {
+        // Cerrar
         mobileMenu.classList.add('translate-x-full');
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
       }
     });
 
+    // Cerrar al hacer click en un enlace
     document.querySelectorAll('.mobile-link').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('translate-x-full');
