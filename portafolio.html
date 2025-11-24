@@ -27,6 +27,21 @@
       border-radius: 8px;
       overflow: hidden;
       cursor: pointer;
+
+        /* Centrar contenido y dejar un pequeño espacio inferior */
+      display: flex;
+      align-items: center;       /* centra verticalmente la imagen */
+      justify-content: center;
+      padding-bottom: 12px;      /* ajusta para ver más o menos "respiro" */
+      box-sizing: border-box;
+
+      .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: calc(100% - 12px); /* resta el padding para que la imagen no toque el borde inferior */
+      object-fit: cover;
+      object-position: center;   /* centra la imagen (evita cortar siempre por abajo) */
+      }
     }
 
     .swiper-slide-active {
