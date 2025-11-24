@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ShotSer - Fotografía Profesional</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap');
     .font-signature { font-family: 'Dancing Script', cursive; }
@@ -36,7 +40,7 @@
     </div>
   </nav>
 
-<div id="mobile-menu" class="fixed inset-y-0 right-0 w-3/4 bg-black z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-center items-center shadow-2xl border-l border-white/10">
+  <div id="mobile-menu" class="fixed inset-y-0 right-0 w-3/4 bg-black z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-center items-center shadow-2xl border-l border-white/10">
     
     <ul class="flex flex-col space-y-8 text-center">
       <li><a href="sobremi.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Sobre Mí</a></li>
@@ -82,21 +86,16 @@
       isMenuOpen = !isMenuOpen;
       
       if (isMenuOpen) {
-        // Abrir menú (quitamos la clase que lo esconde a la derecha)
         mobileMenu.classList.remove('translate-x-full');
-        // Cambiar icono de hamburguesa a X
         icon.classList.remove('fa-bars');
         icon.classList.add('fa-times');
       } else {
-        // Cerrar menú (volvemos a esconderlo)
         mobileMenu.classList.add('translate-x-full');
-        // Cambiar icono de X a hamburguesa
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
       }
     });
 
-    // Cerrar el menú si tocas cualquier enlace (para que no se quede abierto)
     document.querySelectorAll('.mobile-link').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('translate-x-full');
