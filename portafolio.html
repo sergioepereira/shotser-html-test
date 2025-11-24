@@ -129,19 +129,38 @@
 </head>
 <body class="min-h-screen bg-black text-white pt-20 overflow-x-hidden">
 
-  <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 px-6 py-4 backdrop-blur-sm border-b border-white/5">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-signature text-white">ShotSer</a>
+  <nav class="fixed top-0 left-0 w-full h-20 z-50 bg-black/90 px-6 backdrop-blur-sm border-b border-white/5 flex items-center">
+    <div class="w-full max-w-7xl mx-auto flex justify-between items-center relative">
+      
+      <a href="index.html" class="text-2xl font-signature text-white select-none relative z-50">ShotSer</a>
+      
       <ul class="hidden md:flex space-x-6 text-gray-300 uppercase tracking-widest text-sm">
-        <li><a href="index.html" class="hover:text-white">Inicio</a></li>
-        <li><a href="sobremi.html" class="hover:text-white">Sobre Mí</a></li>
-        <li><a href="portafolio.html" class="text-white border-b border-white">Portafolio</a></li>
-        <li><a href="precios.html" class="hover:text-white">Precios</a></li>
-        <li><a href="recomendaciones.html" class="hover:text-white">Recomendaciones</a></li>
-        <li><a href="contacto.html" class="hover:text-white">Contacto</a></li>
+        <li><a href="index.html" class="hover:text-white transition">Inicio</a></li>
+        <li><a href="sobremi.html" class="hover:text-white transition">Sobre Mí</a></li>
+        <li><a href="portafolio.html" class="hover:text-white transition">Portafolio</a></li>
+        <li><a href="precios.html" class="hover:text-white transition">Precios</a></li>
+        <li><a href="recomendaciones.html" class="hover:text-white transition">Recomendaciones</a></li>
+        <li><a href="contacto.html" class="hover:text-white transition">Contacto</a></li>
       </ul>
+
+      <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none p-2 relative z-50">
+        <i class="fas fa-bars fa-xl"></i>
+      </button>
+
     </div>
   </nav>
+
+  <div id="mobile-menu" class="fixed top-[80px] right-0 w-full h-14 bg-white/10 backdrop-blur-sm z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex items-center md:hidden px-6 overflow-x-auto scrollbar-hide">
+    
+    <ul class="flex flex-row items-center space-x-6 whitespace-nowrap">
+      <li><a href="sobremi.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Sobre Mí</a></li>
+      <li><a href="portafolio.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Portafolio</a></li>
+      <li><a href="precios.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Precios</a></li>
+      <li><a href="recomendaciones.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Recomendaciones</a></li>
+      <li><a href="contacto.html" class="text-sm text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Contacto</a></li>
+    </ul>
+
+  </div>
 
   <section class="py-10 w-full">
     <h2 class="text-5xl font-serif text-center mb-8">Portafolio</h2>
@@ -378,5 +397,44 @@
       }
     });
   </script>
+
+<script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const icon = menuBtn.querySelector('i');
+    let isMenuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      
+      if (isMenuOpen) {
+        // Abrir: Mueve el menú de izquierda a derecha (el 'translate-x-0' lo hace visible)
+        mobileMenu.classList.remove('translate-x-full');
+        // Cambiar icono a X
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        // Cerrar: Mueve el menú de derecha a izquierda (el 'translate-x-full' lo esconde)
+        mobileMenu.classList.add('translate-x-full');
+        // Cambiar icono a hamburguesa
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Cerrar el menú si se hace clic en un enlace (y navegar)
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        // Si no es un enlace de la página actual, se cierra y navega
+        setTimeout(() => {
+          mobileMenu.classList.add('translate-x-full');
+          isMenuOpen = false;
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }, 100); // Pequeño retraso para que la transición sea suave antes de cargar la página
+      });
+    });
+  </script>
+
 </body>
 </html>
