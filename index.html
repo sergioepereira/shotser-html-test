@@ -16,21 +16,40 @@
 </head>
 <body class="h-screen bg-black text-white overflow-hidden">
 
-  <nav class="fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-4 backdrop-blur-sm">
+  <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 px-6 py-4 backdrop-blur-sm border-b border-white/5">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <div class="flex items-center">
-        <span class="text-2xl font-signature text-white">ShotSer</span>
-      </div>
+      
+      <a href="index.html" class="text-2xl font-signature text-white relative z-50">ShotSer</a>
+      
       <ul class="hidden md:flex space-x-6 text-gray-300 uppercase tracking-widest text-sm">
-        <li><a href="index.html" class="text-white border-b border-white">Inicio</a></li>
+        <li><a href="index.html" class="hover:text-white transition">Inicio</a></li>
         <li><a href="sobremi.html" class="hover:text-white transition">Sobre Mí</a></li>
         <li><a href="portafolio.html" class="hover:text-white transition">Portafolio</a></li>
         <li><a href="precios.html" class="hover:text-white transition">Precios</a></li>
         <li><a href="recomendaciones.html" class="hover:text-white transition">Recomendaciones</a></li>
         <li><a href="contacto.html" class="hover:text-white transition">Contacto</a></li>
       </ul>
+
+      <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none relative z-50">
+        <i class="fas fa-bars fa-2x"></i>
+      </button>
     </div>
   </nav>
+
+<div id="mobile-menu" class="fixed inset-y-0 right-0 w-3/4 bg-black z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-center items-center shadow-2xl border-l border-white/10">
+    
+    <ul class="flex flex-col space-y-8 text-center">
+      <li><a href="sobremi.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Sobre Mí</a></li>
+      <li><a href="portafolio.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Portafolio</a></li>
+      <li><a href="precios.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Precios</a></li>
+      <li><a href="recomendaciones.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Recomendaciones</a></li>
+      <li><a href="contacto.html" class="text-2xl text-white font-light uppercase tracking-widest hover:text-gray-400 transition mobile-link">Contacto</a></li>
+    </ul>
+
+    <div class="absolute bottom-10 text-gray-500 text-xs tracking-widest">
+      SHOTSER PHOTOGRAPHY
+    </div>
+  </div>
 
   <section class="relative h-full w-full flex items-center justify-center">
     <div class="absolute inset-0 z-0">
@@ -52,5 +71,41 @@
       </a>
     </div>
   </section>
+
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const icon = menuBtn.querySelector('i');
+    let isMenuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      
+      if (isMenuOpen) {
+        // Abrir menú (quitamos la clase que lo esconde a la derecha)
+        mobileMenu.classList.remove('translate-x-full');
+        // Cambiar icono de hamburguesa a X
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        // Cerrar menú (volvemos a esconderlo)
+        mobileMenu.classList.add('translate-x-full');
+        // Cambiar icono de X a hamburguesa
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Cerrar el menú si tocas cualquier enlace (para que no se quede abierto)
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+        isMenuOpen = false;
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+  </script>
+
 </body>
 </html>
