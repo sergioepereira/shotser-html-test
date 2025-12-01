@@ -9,6 +9,29 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap');
     .font-signature { font-family: 'Dancing Script', cursive; }
+
+   /* --- REGLA DE SEGURIDAD MÁXIMA PARA BLOQUEAR SELECCIÓN --- */
+    /* * 1. Bloqueamos la selección en TODO el cuerpo del documento.
+     * Esto incluye imágenes, divs, fondos, etc.
+     */
+    body {
+        user-select: none !important;
+        -webkit-user-select: none !important; 
+        -moz-user-select: none !important;    
+        -ms-user-select: none !important;     
+    }
+
+    /* * 2. Re-habilitamos la selección SÓLO en los elementos de texto 
+     * para que el usuario pueda copiar tu descripción "Sobre Mí".
+     */
+    p, h1, h2, h3, h4, h5, h6, a {
+        user-select: text !important;
+        -webkit-user-select: text !important;
+        -moz-user-select: text !important;
+        -ms-user-select: text !important;
+    }
+    /* --- FIN DE REGLAS DE SEGURIDAD --- */
+    
   </style>
 </head>
 <body class="bg-neutral-950 text-white lg:h-screen lg:overflow-hidden flex flex-col">
@@ -59,9 +82,9 @@
       </div>
     </div>
 
-    <div class="w-full lg:w-7/12 h-full order-2 bg-neutral-950 flex flex-col justify-center px-10 lg:px-24 py-10 relative z-20">
+    <div class="w-full lg:w-7/12 h-full order-2 bg-neutral-950 flex flex-col justify-center px-6 lg:px-24 py-10 relative z-20">
     
-    <div class="px-8 py-12 w-full mx-auto">
+    <div class="px-0 py-4 w-full mx-auto">
         <h2 class="text-4xl md:text-5xl font-serif mb-8 text-right lg:text-left">Sobre mí</h2>
         
         <div class="space-y-6 text-gray-400 font-light text-lg text-justify leading-relaxed pr-0 lg:pr-12">
@@ -129,5 +152,22 @@
       });
     });
   </script>
+<script>
+    // 1. Bloquear Click Derecho (Menú Contextual)
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
+
+    // 2. Bloquear Arrastrar y Soltar (Drag & Drop)
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
+  </script>
+
 </body>
+
 </html>

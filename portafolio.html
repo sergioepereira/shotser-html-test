@@ -12,7 +12,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap');
     .font-signature { font-family: 'Dancing Script', cursive; }
     
-    /* --- ESTILOS SWIPER (CARRUSEL) --- */
+    /* --- ESTILOS SWIPER (CARRUSEL) CORREGIDO --- */
     .swiper { width: 100%; padding-top: 50px; padding-bottom: 50px; }
     
     .swiper-slide {
@@ -24,25 +24,16 @@
       opacity: 0.4; 
       transform: scale(0.85); 
       filter: grayscale(100%);
-      border-radius: 8px; /* BORDE REDONDEADO: Mantenido aquí */
-      overflow: hidden;
+      
+      /* CORRECCIÓN DE BORDES REDONDEADOS */
+      border-radius: 20px; /* Redondeo más notorio */
+      overflow: hidden;    /* OBLIGA a que nada se salga de los bordes redondeados */
       cursor: pointer;
-
-        /* Centrar contenido y dejar un pequeño espacio inferior */
-      display: flex;
-      align-items: center;       /* centra verticalmente la imagen */
-      justify-content: center;
-      padding-bottom: 50px;      /* ajusta para ver más o menos "respiro" */
-      box-sizing: border-box;
-
-      .swiper-slide img { 
+      
+      /* Eliminamos paddings extraños para que la foto ocupe todo */
       display: block; 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      object-position: center; /* Cambiamos de 'top' a 'center' para centrar el encuadre */
-      border-radius: 8px; /* BORDE REDONDEADO: Añadido aquí para asegurar */
-      }
+      padding: 0;
+      margin: 0;
     }
 
     .swiper-slide-active {
@@ -53,10 +44,19 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     }
 
+    /* La imagen ocupa el 100% del contenedor redondeado */
     .swiper-slide img { 
-      display: block; width: 100%; height: 100%; 
-      object-fit: cover; object-position: top; 
+      display: block; 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      object-position: center; 
+      border-radius: 0; /* Quitamos el radio a la imagen, lo maneja el contenedor */
     }
+
+    @media (min-width: 768px) {
+      .swiper-slide { width: 35vw; height: 60vh; } 
+    }}
 
     @media (min-width: 768px) {
       .swiper-slide { width: 35vw; height: 60vh; } 
@@ -452,6 +452,22 @@
           icon.classList.add('fa-bars');
         }, 100); // Pequeño retraso para que la transición sea suave antes de cargar la página
       });
+    });
+  </script>
+
+<script>
+    // 1. Bloquear Click Derecho (Menú Contextual)
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
+
+    // 2. Bloquear Arrastrar y Soltar (Drag & Drop)
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
     });
   </script>
 
