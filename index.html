@@ -16,6 +16,48 @@
     @keyframes fade-in-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .animate-pulse-slow { animation: pulse 8s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.4; } }
+
+/* Definición del destello pulsante (Ajuste Sutil y Diagonal) */
+    @keyframes pulsate-glow {
+      /* 0% a 90% es el descanso/pausa: Bajamos la intensidad base a 80% */
+      0%, 90% {
+        text-shadow: none; 
+        opacity: 0.8;      /* Texto visible, pero más tenue que antes */
+      }
+      /* 92% es el pico de brillo (Flash) */
+      92% { 
+        /* Sombra muy sutil (menos blur y menos opacidad) + BIAS DIAGONAL */
+        text-shadow: 
+          /* 1. Sombra principal (simula luz desde abajo-derecha) */
+          1px 1px 8px rgba(255, 255, 255, 0.5), 
+          /* 2. Sombra de dispersión (más difusa, hacia arriba-izquierda) */
+          -1px -1px 3px rgba(255, 255, 255, 0.2),
+          /* 3. El blanco puro del texto */
+          0 0 4px #ffffff; 
+        opacity: 1;      
+      }
+      /* 95% a 100% vuelve rápidamente al estado de descanso */
+      95%, 100% {
+        text-shadow: none;
+        opacity: 0.8; 
+      }
+    }
+
+    /* EFECTO GLOW DINÁMICO (FLASH) */
+    .luxury-glow {
+      /* Mantenemos las correcciones */
+      color: #ffffff !important; 
+      -webkit-text-fill-color: #ffffff !important; 
+      line-height: 1.6 !important; 
+      
+      /* Animación con pausa larga */
+      animation: pulsate-glow 6s infinite ease-out; 
+      
+      /* Estado inicial: Opacidad ajustada */
+      text-shadow: none;
+      opacity: 0.8;
+    }
+
   </style>
 </head>
 <body class="h-screen bg-black text-white overflow-hidden">
@@ -63,7 +105,7 @@
     
     <div class="relative z-20 text-center px-4 animate-fade-in-up">
       <h2 class="text-gray-300 tracking-[0.3em] uppercase text-sm md:text-base mb-4">Fotografía Profesional</h2>
-      <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif text-white mb-4">Sergio Pereira</h1>
+      <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif mb-4 luxury-glow">Sergio Pereira</h1>
       <span class="font-signature text-4xl md:text-5xl text-white mb-8 block"><img src="img/Logo blanco.png" alt="ShotSer Logo" class="inline-block h-[180px] w-auto align-middle -mt-1 mx-1"></span>
       <p class="max-w-2xl mx-auto text-gray-200 mb-10 font-light text-lg leading-relaxed italic">
         "Imágenes que hacen que tu marca hable sin decir nada."
