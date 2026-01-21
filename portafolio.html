@@ -141,6 +141,25 @@
       50% { opacity: 0.3; text-shadow: 0 0 0px white; }
       100% { opacity: 1; text-shadow: 0 0 10px white; }
     }
+
+    ```css
+    /* --- PARCHE DE SEGURIDAD ANTI-DESCARGA (MÓVIL Y PC) --- */
+    img {
+      /* Bloquea el menú contextual al mantener presionado en iOS/Android */
+      -webkit-touch-callout: none !important; 
+      
+      /* Evita que la imagen se seleccione o se ponga azul */
+      -webkit-user-select: none !important;
+      -khtml-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      
+      /* Asegura que las imágenes no se puedan arrastrar */
+      -webkit-user-drag: none !important;
+      user-drag: none !important;
+    }
+
   </style>
 </head>
 <body class="min-h-screen bg-black text-white overflow-y-hidden overflow-x-hidden">
