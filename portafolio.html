@@ -143,17 +143,21 @@
     }
 
    
-    /* --- PARCHE DE SEGURIDAD ANTI-DESCARGA --- */
+    /* --- PARCHE DE SEGURIDAD ANTI-DESCARGA (MÓVIL Y PC) --- */
     img {
+      /* Bloquea el menú contextual al mantener presionado en iOS/Android */
       -webkit-touch-callout: none !important; 
+      
+      /* Evita que la imagen se seleccione o se ponga azul */
       -webkit-user-select: none !important;
       -khtml-user-select: none !important;
       -moz-user-select: none !important;
       -ms-user-select: none !important;
       user-select: none !important;
+      
+      /* Asegura que las imágenes no se puedan arrastrar */
       -webkit-user-drag: none !important;
       user-drag: none !important;
-      pointer-events: none; /* ESTO ES UN EXTRA: hace que la imagen sea "invisible" al click */
     }
 
   </style>
